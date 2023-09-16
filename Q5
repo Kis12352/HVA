@@ -1,0 +1,9 @@
+root@kishori-virtual-machine:/var/log# head -n 10 auth.log
+root@kishori-virtual-machine:/var/log# tail -n 10 auth.log
+root@kishori-virtual-machine:/var/log# tail -n 5 | head -n 10 auth.log
+root@kishori-virtual-machine:/var/log# last -n 10 | grep system auth.log
+root@kishori-virtual-machine:/var/log# last -n 10 | grep system | grep -wv root auth.log
+root@kishori-virtual-machine:/var/log# grep -c root auth.log
+222
+
+#whiel attempting this question I understood head, tail, last, grep command using man and then according to the requeirement I changed the parameters and solved the question. I used multiple flags also understood the importance of positioning of pipeline. 
