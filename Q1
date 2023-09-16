@@ -1,0 +1,15 @@
+root@kishori-virtual-machine:/# mkdir cloud-curriculum
+root@kishori-virtual-machine:/cloud-curriculum# mkdir {Fundamentals,Linux,Networking}
+root@kishori-virtual-machine:/cloud-curriculum# mkdir AWS-Cloud
+root@kishori-virtual-machine:/cloud-curriculum/Fundamentals# mkdir Python Git
+root@kishori-virtual-machine:/cloud-curriculum/Fundamentals/Python# touch DSA.py Functions.py OOPS.py
+root@kishori-virtual-machine:/cloud-curriculum/Linux# mkdir OperatindSystem BasicCommands FileSystems
+root@kishori-virtual-machine:/cloud-curriculum/Linux/BasicCommands# touch ls.sh mkdir.sh cd.sh
+root@kishori-virtual-machine:/cloud-curriculum/Networking# touch OSILayers.txt Firewalls.txt Subnets.txt
+root@kishori-virtual-machine:/cloud-curriculum/AWS-Cloud# mkdir Compute Storage Access-Management 
+root@kishori-virtual-machine:/cloud-curriculum/AWS-Cloud/Compute# touch ElasticCloudCompute.json AutoScalingGroup.json ElasticLoadBalancer.json
+root@kishori-virtual-machine:/cloud-curriculum/AWS-Cloud/Storage# touch S3.yaml ElasticBlockStorage.yaml
+root@kishori-virtual-machine:/# cp –r cloud-curriculum cloud
+root@kishori-virtual-machine:/# rm -r cloud-curriculum
+
+#In this file I understood how the mkdir and touch command works. 
