@@ -1,0 +1,27 @@
+kishori@kishori-virtual-machine:~$ sudo addgroup test
+root@kishori-virtual-machine:~# useradd -G test nginx
+root@kishori-virtual-machine:~# passwd nginx 
+root@kishori-virtual-machine:~# cat /etc/group
+test:x:1002:nginx
+nginx:x:1003:
+root@kishori-virtual-machine:~# sudo su - nginx
+root@kishori-virtual-machine:/home# mkdir nginx
+root@kishori-virtual-machine:/home# chmod -R 750 nginx
+root@kishori-virtual-machine:/home# chown -R nginx:test nginx/
+$ chmod g-w cricket.txt
+$ whoami
+$ cp cricket.txt /home/score
+
+#In this question first I created one group and then I tried to see it via ls commands and it was not visible so after serching I understood that it will be present in /etc directory. For adding user to the test group I went through the detailed informaiton about useradd command via man command.
+after adding the user to the group, I created the password for user. After creating the user, I wasn't able to open user's home directory, I was getting a eroor and after searching I understood that user didn't had home directory, in some linux versions the home directory for user will be automatically created while in ubuntu we have to create it seperately. 
+I also tried giving user the root privillages by editing the /etc/sudoers file with nanoeditor. Once I created the home directory for user and since I already gave the user permissions other tasks were easy. 
+After that I checked which are permisisons cricket.txt file is having and according to the quesiton I made the changes. 
+#chmod -R 750 nginx, using this command I am giving the user all the permissions, for group only read and write permissions and for others I am giving no permissions. 
+Owner: Read (4) + Write (2) + Execute (1) = 7
+Group: Read (4) + Execute (1) = 5
+Others: No permissions (0)
+#chown -R nginx:test nginx/
+In this command I am changing the ownership of nginx directory. nginx user of test group is now the owner of all the files in that directory. 
+#cj,pd g-w cricket.txt
+using chmod commamd I am removing the write permission on cricket.txt file from group. 
+whoami tells us the current user. 
