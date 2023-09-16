@@ -1,0 +1,9 @@
+root@kishori-virtual-machine:/# ps -u root -o pid,pcpu,start_time
+root@kishori-virtual-machine:/# ps -e -o pid,user,%cpu,etime,comm --sort=pid | grep "root" | grep "$(date +'%H:%M')"
+root@kishori-virtual-machine:/# ts=$(date +"%Y%m%d%H%M%S")
+root@kishori-virtual-machine:/# ps -u root -o pid,%cpu --sort=pid > "$ts.txt"
+
+root@kishori-virtual-machine:/# cat $ts.txt
+
+# In this qustion I understood how we can view the different processes and learned some things by giving man pid. Through sort command I sorted the output and 
+I used grep to get root related processes and then I created ts.txt file and copied the output to that file. 
