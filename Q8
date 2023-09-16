@@ -1,0 +1,4 @@
+root@kishori-virtual-machine:/home# find / -type f -size +1G
+root@kishori-virtual-machine:/home# tar -zcvf test.tgx test/
+
+# while solving this question I understood about /proc file as well as /run file. 
