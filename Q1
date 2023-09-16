@@ -12,4 +12,4 @@ root@kishori-virtual-machine:/cloud-curriculum/AWS-Cloud/Storage# touch S3.yaml 
 root@kishori-virtual-machine:/# cp –r cloud-curriculum cloud
 root@kishori-virtual-machine:/# rm -r cloud-curriculum
 
-#In this file I understood how the mkdir and touch command works. 
+#While solving this question I understood how the mkdir and touch command works, I also used the pwd, cd .., ls -lrt commands. 
