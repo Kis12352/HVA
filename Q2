@@ -1,0 +1,8 @@
+root@kishori-virtual-machine:/# ls -lhtra
+root@kishori-virtual-machine:/cloud/cloud-curriculum# ls -lhtra
+#ls - This commnad lists the files of the current directory 
+l - list of all the files in long format inclunding parameters like permssions, owenership of the file
+h - it makes the file size human readbable 
+t - this flag tells the ls commnad to sort the file according to the modification time and keept the recently modified files on the top
+r - it reverses the order in which files are about to be displayed, in this case the recently modified files will be kept in the last
+a - is states the ls file to include hidden files, the name of the hidden files will have dot extension for eg. .config
