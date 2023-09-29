@@ -13,3 +13,14 @@ root@kishori-virtual-machine:/# cp –r cloud-curriculum cloud
 root@kishori-virtual-machine:/# rm -r cloud-curriculum
 
 #While solving this question I understood how the mkdir and touch command works, I also used the pwd, cd .., ls -lrt commands. 
+To change the directory we use cd.. command, I installed the tree command using sudo install tree and I explored various flags in tree. 
+I also learned script coomand. 
+Script - script makes a typescript of everything in your terminal. 
+Following are some of the flags which I leared in tree. 
+-d = will only list directories 
+-a = will only list hidden files
+-s = will list size of the files
+-r = puts the output in reverse order 
+-f = prints outputs where the file path is there
+
+![Q1_Tree](https://github.com/Kis12352/HVA/assets/67793475/af0b9053-26ce-4c9d-a990-caff26dbcfb7)
