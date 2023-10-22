@@ -1,0 +1,11 @@
+#!/bin/bash
+
+#Write a shell script that asks the user for their name and prints a greeting message with their name
+
+#Taking the input from the user
+
+read -p "Enter your Name: " name
+
+#Printing the greeting message for the user
+
+echo "Welcome $name "

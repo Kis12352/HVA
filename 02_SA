@@ -1,0 +1,47 @@
+#!/bin/bash
+
+#Write a shell script that takes a list of numbers as input and prints the sum of all the even numbers in the list
+
+#Writing a shell script that takes a list of numbers
+
+#Initialize an empty array
+declare -a elements
+
+#Take users input
+echo "Enter elements for the array (type 'done' if you are finish entering elements): "
+
+#Loop to read input elements
+while true; do
+	read -p "> " input
+	
+	#Conver the input into lower case, tr stands for translate
+	input_lower=$(echo "$input" | tr '[:upper]' '[:lower]')
+
+	#Check if the user wants to exit
+	if [[ "$input_lower" == "done" ]]; then
+		break
+	fi
+
+	#Add the input element to the array
+	elements+=("$input")
+done
+
+#Display the entered elements
+echo "Entered elements:"
+for element in "${elements[@]}"; do
+	echo "$element"
+done
+
+#intialilze the sum as 0
+sum=0
+
+#finding even numbers in array
+for element in "${elements[@]}";
+do
+	let r=$element%2
+	if [[ $r -eq 0 ]]
+	then
+		sum=$(( $sum + $element ))
+	fi	
+done
+echo "Sum of the even numbers is $sum"

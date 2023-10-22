@@ -1,0 +1,80 @@
+#!/bin/bash
+
+#Write a shell script that takes a list of files as input and creates new directory with the name backup and copies all the files in that directory. 
+#The script should also create a compressed archive of the backup directory and save it as timestarmp file.
+
+#displaying files that we are going to copy
+
+read -p "Enter the path to see the files that you are copying : " LOCATION
+
+command=$(ls -p  $LOCATION | grep -v /)
+#here grep -v / : this option excludes the directory and only displays files
+
+echo " Files in $LOCATION are $command "
+
+#specify the path where you want to create backup directory
+target_directory="/home/kishori05"
+
+#change to the target directory
+cd "$target_directory" || exit
+
+#create the backup directory
+
+directory_name="backup"
+
+
+
+
+if [ -d "$directory_name" ]
+then 
+	echo " The '$directory_name' exists in '$target_directory' "
+else 
+	mkdir "$directory_name"
+	echo "The directory '$directory_name' has been created in '$target_directory' "
+fi
+
+#let's see if backup already has the files that you are trying to copy
+location1="/home/kishori05/backup"
+command=$(ls $location1)
+
+echo "Files in $location1 are $command "
+
+#copying files from location to backup
+
+read -p "Do you want to copy the files from '$LOCATION' to '$directory_name' (yes/no) ? " answer
+if [ $answer == "yes" ]
+then
+	command1=$(find $LOCATION -maxdepth 1 -type f -exec cp {} $directory_name \;)
+	echo " Files are copied from '$LOCATION' to '$directory_name' "
+else
+	echo "Thank you!"
+fi
+
+<<comment
+in the above command the option are as follows,
+-maxdepth 1 - this options limits the search of files to the current directory, basically it excludes the current directory
+-type f - this option only finds the fiels excluding files 
+-exec cp - it executes the command copy for each found file, found file is represented by {}
+comment
+
+
+#creating the timestamp for the archive filename
+timestamp=$(date +%Y%m%d%H%M%S)
+
+#Compress the backup directory and save it as archive file
+tar -czf "${directory_name}_${timestamp}.tar.gz" "$directory_name"
+<<comment
+tar - it stands for tape archive, we use this for compressing file
+-c - it stands for create, this option tells the tar command to create new archive file
+-z - this option tells to gzip the file
+-f - this option specifies the name of the file, this option needs to be followed up with the name of the file
+comment
+
+
+echo "The '$directory_name' directory has been compressed and saved as '${directory_name}_${timestamp}.tar.gz' "
+
+
+
+
+
+

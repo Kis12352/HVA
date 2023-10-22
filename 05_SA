@@ -1,0 +1,66 @@
+#!/bin/bash
+
+#write a shell script that takes a directory path as input and recursively searches for all files with the extension .txt. For each file, the script should create a new file with the same name but extension should change to .bak and the contents of the nnew file should be the same as original file but with the all instances of the word "foo" replaced with "bar".
+
+#commands to show the content of txt files
+
+#specify the directory
+target_directory="/home/kishori05/myscripts/shell-scriptingAssignment"
+
+#change to target directory 
+cd "$target_directory" || exit
+
+command_a=$(cat a.txt)
+command_b=$(cat b.txt)
+command_c=$(cat c.txt)
+command_d=$(cat d.txt)
+
+echo "The content in first file is: '$command_a' "
+echo "The content in second file is: '$command_b' "
+echo "The content in third file is: '$command_c' "
+echo "The content in forth file is: '$command_d' "
+
+#function to process and create .bak file
+<<comment
+This function takes one argument, which is the input file path('$1')
+It extracts the filename(without the .txt extension) to construct the output filename with .bak extension.
+we are using sed to change the foo to bar and in the last line it is printing the message where the file is saved and with whatname.
+comment
+
+process_file() {
+	local input_file="$1"
+	local output_file="${input_file%.txt}.bak"
+	
+	#Replace "foo" with "bar" and save it to the .bak file 
+	sed 's/foo/bar/g' "$input_file" > "$output_file"
+
+	echo "Processed: $input_file -> $output_file"
+}
+
+
+#Ask the user to enter the directory path
+read -p "Enter the directory path: " directory_path
+
+#Check if the provided path is valid or not
+if [ ! -d "$directory_path" ] 
+then
+	echo "Error: '$directory_path' is not a valid directory. "
+	exit 1
+fi
+
+#Find .txt files and process them 
+find "$directory_path" -type f -name "*.txt" -print0 | while IFS= read -r -d $'\0' file; do
+	process_file "$file"
+done
+<<comment
+find - it searches for files in the directory_path
+$directory_path - the directory where the files are located
+-type f = specifies that we are looking for regular files not directories
+-name *.txt = specifies that we are looking for the files that are having .txt extension
+-print 0 = prints results with null terminators
+while IFS= read -r -d $'\0' = this part is a loop that reads each result from find with null terminators and assigns it to a variable file
+process_file $file - calls the process file function with each file found by file
+comment
+
+command_f=$(ls /home/kishori05/myscripts/shell-scriptingAssignment)
+echo "The final contents are '$command_f' "

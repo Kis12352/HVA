@@ -1,0 +1,24 @@
+#!/bin/bash
+
+#write a shell script that takes path as input and prints the number fo files in that directory excluding subdirectories. 
+
+#take input of the directory path from the user
+read -p "Enter directory path: " LOCATION
+
+
+#Use find to count files in the specific directory(excluding subdirectories)
+command=$(find $LOCATION -maxdepth 1 -type f |wc -l)
+
+<<comment
+here we are using find command to find the number of directories, maxdepth 1 will exclude the sub-directories and it will only search for files in current directory so basically it will search on level 1,
+-type f - this option tells to search for files not directories. 
+wc stands for word count, so it will count the words and since we want it to count files we are giving -l that is lines. 
+comment
+
+
+
+
+#to print the count 
+echo "Number of files in $LOCATION is $command "
+
+
